@@ -8,7 +8,7 @@ const connect = require("./connect");
 // const cors = require("cors");
 // const saveDocument = require("./functions/utils/document.utils.js");
 
-// require('dotenv').config();
+require('dotenv').config();
 connect(process.env.MONGO_URI);
 
 // app.use(express.json());
