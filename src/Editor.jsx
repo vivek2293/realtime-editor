@@ -11,7 +11,7 @@ function Editor(props) {
 
     useEffect(() => {
         if(props.data.title){
-            const socket = new WebSocket(`ws://realtime-editor-igx8.onrender.com/${props.data.title}`);
+            const socket = new WebSocket(`wss://realtime-editor-igx8.onrender.com/${props.data.title}`);
             setWs(socket);
 
             socket.onopen = () => {
