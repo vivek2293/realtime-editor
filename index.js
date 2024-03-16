@@ -1,14 +1,14 @@
 const express = require("express");
 const app = express();
-const server = require('http').createServer(app);
-const WebSocket = require("ws");
-const connect = require("./connect");
-const logger = require("./middleware/logger")
-const routes = require("./routes/router");
-const cors = require("cors");
-const saveDocument = require("./functions/utils/document.utils.js");
+// const server = require('http').createServer(app);
+// const WebSocket = require("ws");
+// const connect = require("./connect");
+// const logger = require("./middleware/logger")
+// const routes = require("./routes/router");
+// const cors = require("cors");
+// const saveDocument = require("./functions/utils/document.utils.js");
 
-require('dotenv').config();
+// require('dotenv').config();
 // connect(process.env.MONGO_URI)
 
 // app.use(express.json());
@@ -67,8 +67,8 @@ app.get("/", (req, res) => {
 });
 
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log("Server running on port " + PORT)
 });
 
-module.exports = server; 
+module.exports = app; 
