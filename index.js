@@ -9,10 +9,10 @@ const cors = require("cors");
 const saveDocument = require("./functions/utils/document.utils.js");
 
 require('dotenv').config();
-connect(process.env.MONGO_URI)
+// connect(process.env.MONGO_URI)
 
 app.use(express.json());
-app.use(cors({ origin:['http://localhost:3000','http://localhost:3001'] , credentials: true }));
+// app.use(cors({ origin:['http://localhost:3000','http://localhost:3001'] , credentials: true }));
 app.use(logger);
 app.use("/api/v1", routes);
 
