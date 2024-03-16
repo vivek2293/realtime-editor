@@ -12,7 +12,7 @@ require('dotenv').config();
 connect(process.env.MONGO_URI);
 
 app.use(express.json());
-app.use(cors({ origin:['http://localhost:3000','http://localhost:3001'] , credentials: true }));
+app.use(cors({ origin:['http://localhost:3000','https://frontend--exquisite-sable-3f941c.netlify.app/'] , credentials: true }));
 app.use(logger);
 app.use("/api/v1", routes);
 
