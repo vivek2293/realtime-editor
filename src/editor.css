@@ -1,0 +1,31 @@
+h1{
+  text-align: center;
+  margin: 16px;
+}
+
+h6{
+  text-align: center;
+  margin: 16px;
+}
+
+.area{
+  height: 50vh;
+  width: 90vw;
+  padding: 1%;
+}
+
+p {
+  padding-left: 5%;
+}
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.container button{
+  margin: 2vh;
+  padding: 16px;
+}

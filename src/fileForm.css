@@ -1,0 +1,38 @@
+.form-sel{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.contain{
+    margin: 2vh;
+    padding: 2vh;
+    border: 1px solid black;
+}
+
+.form-sel h2{
+    margin: 2vh;
+}
+
+.form-sel form{
+    margin: 1vh;
+}
+
+.form-sel form label{
+    margin: 1vh;
+}
+
+.form-sel form input{
+    margin: 1vh;
+}
+
+.form-sel form input:first-child{
+    line-height: 20px;
+}
+
+.btn{
+    margin: 1vh;
+    padding: 8px;
+}
