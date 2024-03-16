@@ -12,7 +12,7 @@ const FileForm = () => {
   const [edi_card, setEdi_card] = useState("none"); //block
 
   const getDocumentdata = async(Title) =>{
-    const res = await axios.get(`http://localhost:5000/api/v1/docs/getdoc/${Title}`);
+    const res = await axios.get(`https://realtime-editor-igx8.onrender.com/api/v1/docs/getdoc/${Title}`);
     if(res.status === 200){
         setApiData(res.data);
         setSel_card("none");
@@ -28,13 +28,13 @@ const FileForm = () => {
 
     try {
       if (fileType === 'create') {
-        const res = await axios.post('http://localhost:5000/api/v1/docs/create', { title });
+        const res = await axios.post('https://realtime-editor-igx8.onrender.com/api/v1/docs/create', { title });
         if(res.status === 201){
             toast.success('File created successfully!');
             getDocumentdata(title);
         }
       } else {
-        const res = await axios.post('http://localhost:5000/api/v1/docs/findDoc', { title });
+        const res = await axios.post('https://realtime-editor-igx8.onrender.com/api/v1/docs/findDoc', { title });
         if(res.status === 200){
             toast.success("Opening File!");
             getDocumentdata(title);

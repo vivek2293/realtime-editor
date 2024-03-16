@@ -11,7 +11,7 @@ function Editor(props) {
 
     useEffect(() => {
         if(props.data.title){
-            const socket = new WebSocket(`ws://localhost:5000/${props.data.title}`);
+            const socket = new WebSocket(`ws://realtime-editor-igx8.onrender.com/${props.data.title}`);
             setWs(socket);
 
             socket.onopen = () => {
@@ -51,7 +51,7 @@ function Editor(props) {
 
     const clear = async () => {
         try {
-            const res = await axios.post('http://localhost:5000/api/v1/docs/save', {
+            const res = await axios.post('https://realtime-editor-igx8.onrender.com/api/v1/docs/save', {
                 title: props.data.title,
                 data: text
             });
