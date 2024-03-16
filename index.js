@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const server = require('http').createServer(app);
-const WebSocket = require("ws");
+// const WebSocket = require("ws");
 const connect = require("./connect");
 const logger = require("./middleware/logger")
 const routes = require("./routes/router");
@@ -16,51 +16,51 @@ app.use(cors({ origin:['http://localhost:3000','http://localhost:3001'] , creden
 app.use(logger);
 app.use("/api/v1", routes);
 
-const wss = new WebSocket.Server({ server: server });
-const activeConnections = new Map();
+// const wss = new WebSocket.Server({ server: server });
+// const activeConnections = new Map();
 
-wss.on('connection', function connection(ws, req) {
-	const documentId = req.url.split('/').pop();
-	console.log(documentId);
+// wss.on('connection', function connection(ws, req) {
+// 	const documentId = req.url.split('/').pop();
+// 	console.log(documentId);
 
-	if (!documentId) {
-		ws.close();
-		return;
-	}
+// 	if (!documentId) {
+// 		ws.close();
+// 		return;
+// 	}
 
-	if(!activeConnections.has(documentId)){
-		activeConnections.set(documentId, [ws]);
-	} 
-	else{
-		activeConnections.get(documentId).push(ws);
-	}
+// 	if(!activeConnections.has(documentId)){
+// 		activeConnections.set(documentId, [ws]);
+// 	} 
+// 	else{
+// 		activeConnections.get(documentId).push(ws);
+// 	}
 	
-	ws.on('message', async (message, isBinary) => {
-		const connections = activeConnections.get(documentId);
-		connections.forEach((connection) => {
-		  if (connection !== ws && connection.readyState === WebSocket.OPEN) {
-			connection.send(message, { binary: isBinary });
-		  }
-		});
+// 	ws.on('message', async (message, isBinary) => {
+// 		const connections = activeConnections.get(documentId);
+// 		connections.forEach((connection) => {
+// 		  if (connection !== ws && connection.readyState === WebSocket.OPEN) {
+// 			connection.send(message, { binary: isBinary });
+// 		  }
+// 		});
 
-		try {
-			await saveDocument(documentId, message.toString());
-		} catch (error) {
-			console.error('Error saving document:', error);
-		}
-	});
+// 		try {
+// 			await saveDocument(documentId, message.toString());
+// 		} catch (error) {
+// 			console.error('Error saving document:', error);
+// 		}
+// 	});
 
-	ws.on('close', () => {
-		const connections = activeConnections.get(documentId);
-		const index = connections.indexOf(ws);
-		if (index !== -1) {
-		  connections.splice(index, 1);
-		  if (connections.length === 0) {
-			activeConnections.delete(documentId);
-		  }
-		}
-	});
-})
+// 	ws.on('close', () => {
+// 		const connections = activeConnections.get(documentId);
+// 		const index = connections.indexOf(ws);
+// 		if (index !== -1) {
+// 		  connections.splice(index, 1);
+// 		  if (connections.length === 0) {
+// 			activeConnections.delete(documentId);
+// 		  }
+// 		}
+// 	});
+// })
 
 app.get("/", (req, res) => {
   return res.send("API working");
